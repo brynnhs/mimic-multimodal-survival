@@ -1,0 +1,34 @@
+====================================
+Project: Multimodal Survival Prediction (MIMIC-IV + CXR Embeddings)
+Team: Brynn Harris-Shanks, Julian Ostermaier
+====================================
+
+BRYNN - CODING, MODELING, MAIN RESULTS
+
+[ ] B1 - Set up repo structure, environment, and shared config files
+[ ] B2 - Implement clinical feature preprocessing (cleaning, encoding, scaling)
+[ ] B3 - Define survival outcome and censoring logic in code
+[ ] B4 - Implement clinical-only baseline survival models (Cox, RSF, simple DeepSurv)
+[ ] B5 - Implement evaluation utilities (C-index, IBS, calibration, KM curves)
+[ ] B6 - Design and implement multimodal fusion strategies (early / late / intermediate)
+[ ] B7 - Run main multimodal model experiments and save metrics
+[ ] B8 - Generate core figures for report (performance plots, KM curves, calibration plots)
+[ ] B9 - Draft Methods subsections for models and evaluation
+[ ] B10 - Draft Results subsections for primary model comparison (clinical vs image vs fusion)
+[ ] B11 - Create slides for methods, models, and main results for the Jan 6 presentation
+
+------------------------------------
+
+JULIAN - DATA PIPELINE, EMBEDDINGS, SECONDARY ANALYSES
+
+[ ] J1 - Confirm data access and directory structure for MIMIC-IV and CXR embeddings
+[ ] J2 - Implement cohort definition (inclusion/exclusion, time windows, linkage rules)
+[ ] J3 - Implement image embedding preprocessing (filtering, normalization, handling multiple images)
+[ ] J4 - Apply dimensionality reduction on embeddings (e.g., PCA) and document selected approach
+[ ] J5 - Implement image-only survival models using embeddings (Cox / DeepSurv)
+[ ] J6 - Assist with hyperparameter tuning and configuration for fusion models
+[ ] J7 - Create descriptive statistics tables (cohort stats, variable distributions, missingness)
+[ ] J8 - Run and document secondary analyses (e.g., ablations on fusion strategies, sensitivity checks)
+[ ] J9 - Draft Methods subsections for data, cohort, preprocessing, and embeddings
+[ ] J10 - Draft Results subsections for descriptive statistics and secondary analyses
+[ ] J11 - Create slides for background, data, cohorts, fusion strategies at a high level, and conclusions
