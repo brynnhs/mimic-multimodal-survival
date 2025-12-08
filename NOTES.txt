@@ -1,0 +1,9 @@
+dec 4th metting 
+- patient may have multiple images so first we will use the most recent image, but if we have time we should explore 
+combining these 
+- our target will be date of death 
+- can we make accurate predictions using the image embeddings and clinical data?
+    - embeddings vs clinical vs both
+    - compare at least 2 fusion strategies 
+- brynn look at skikit survival, database structure (figure out what we need + any hurdles)
+- Julian will do preprocessing + merging
