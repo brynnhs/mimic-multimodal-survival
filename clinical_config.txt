@@ -1,0 +1,50 @@
+hosp/admissions
+- 'subject_id'
+- 'hadm_id' 
+- 'admittime'
+- 'dischtime' 
+- 'deathtime'
+- 'admission_type'
+- 'insurance'
+- 'race'
+
+hosp/patients
+- 'subject_id'
+- 'gender'
+- 'anchor_age'
+- 'dod'
+
+hosp/diagnoses_icd
+- 'subject_id'
+- 'hadm_id' 
+- 'icd_code'
+- 
+
+hosp/lab_events
+- subject_id
+- hadm_id
+- itemid (says which lab it is we can filter for most relevant labs)
+- charttime (we can filter for those within 24h of admission)
+- value
+- valuenum
+
+icu/icustays
+- subject_id
+- hadm_id
+- stay_id
+- intime
+- outtime
+
+Derived Variables
+- survival time
+- death event: 1 if dead, 0 if not
+- ICU admission (proxy for severity): 1 if icu stay, 0 if not
+- number of ICU stays (again indicates severity, could merge with icu admission)
+- length of stay (another proxy for severity)
+- number of days from admission to CXR
+- comorbidities (map icd_codes to a binary flag for the disease)
+
+
+
+
+
