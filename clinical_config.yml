@@ -1,0 +1,86 @@
+tables:
+  admissions:
+    filepath: core/admissions.csv.gz        # MIMIC-IV: core/admissions.csv.gz
+    columns:
+      - subject_id
+      - hadm_id
+      - admittime
+      - dischtime
+      - deathtime
+      - admission_type
+      - insurance
+      - race
+
+  patients:
+    filepath: core/patients.csv.gz          # MIMIC-IV: core/patients.csv.gz
+    columns:
+      - subject_id
+      - gender
+      - anchor_age
+      - dod
+
+  diagnoses_icd:
+    filepath: hosp/diagnoses_icd.csv.gz     # MIMIC-IV: hosp/diagnoses_icd.csv.gz
+    columns:
+      - subject_id
+      - hadm_id
+      - icd_code
+      - icd_version
+
+  labevents:
+    filepath: hosp/labevents.csv.gz         # MIMIC-IV: hosp/labevents.csv.gz
+    columns:
+      - subject_id
+      - hadm_id
+      - itemid
+      - charttime
+      - value
+      - valuenum
+
+  icustays:
+    filepath: icu/icustays.csv.gz           # MIMIC-IV: icu/icustays.csv.gz
+    columns:
+      - subject_id
+      - hadm_id
+      - stay_id
+      - intime
+      - outtime
+
+derived_variables:
+  - name: survival_time
+    description: "Time from admission to death"
+    inputs:
+      - admissions.admittime
+      - admissions.dischtime
+      - patients.dod
+      - admissions.deathtime
+
+  - name: death_event
+    description: "1 if patient died (dod or deathtime present), 0 otherwise"
+    inputs:
+      - patients.dod
+      - admissions.deathtime
+
+  - name: icu_admission_flag
+    description: "1 if patient has at least one ICU stay for hadm_id, else 0"
+    inputs:
+      - icustays.hadm_id
+
+  - name: num_icu_stays
+    description: "Number of ICU stays for this hospital admission before cxr"
+    inputs:
+      - icustays.hadm_id
+      - icustays.stay_id
+
+  - name: days_from_admission_to_cxr
+    description: "Days between hospital admission and CXR acquisition"
+    inputs:
+      - admissions.admittime
+      - cxr_metadata.study_time   # from your CXR / embedding file
+
+  - name: comorbidities_binary_flags
+    description: "Binary flags for chronic diseases (CHF, COPD, diabetes, renal disease, cancer, liver disease, dementia, MI, PVD) from ICD codes"
+    inputs:
+      - diagnoses_icd.icd_code
+      - diagnoses_icd.icd_version
+      - diagnoses_icd.hadm_id
